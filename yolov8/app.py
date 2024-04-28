@@ -9,8 +9,8 @@ import helper
 st.set_page_config(
     page_title="Object Detection using YOLOv8",
     page_icon="Hi",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    layout="wide"
+
 )
 
 # Main page heading
@@ -21,8 +21,6 @@ st.header("Select Task")
 tasks = ['Object Detection', 'Object Measurement', 'Barcode Scanner']
 model_type = st.radio("", tasks)
 
-# Sidebar
-#st.header("ML Model Config")
 
 # Selecting Detection
 model_path = Path(settings.DETECTION_MODEL)
@@ -55,12 +53,12 @@ elif model_type == 'Object Measurement':
     source_radio = st.radio("Select Source", [settings.WEBCAM, settings.RTSP])
     if source_radio == settings.WEBCAM:
         if st.button('Measure Objects'):
-            helper.play_webcam(model)
+            helper.measure_objects(model)
     
     elif source_radio == settings.RTSP:
         rtsp_url = st.text_input("Enter RTSP Stream URL for Detection:")
         if st.button('Measure Objects'):
-            helper.play_rtsp_stream(model, rtsp_url)
+            helper.measure_objects(model, rtsp_url)
 
 elif model_type == 'Barcode Scanner':
     source_radio = st.radio("Select Source", [settings.WEBCAM, settings.RTSP])

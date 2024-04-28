@@ -49,6 +49,8 @@ def play_rtsp_stream(model, rtsp_url):
             vid_cap.release()
             break
 
+
+# Measure objects
 import cv2
 import numpy as np
 from scipy.spatial import distance as dist
